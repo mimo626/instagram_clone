@@ -17,6 +17,11 @@ class InstaCloneApp extends StatelessWidget {
           colorScheme: const ColorScheme.light(
               primary: Colors.white, secondary: Colors.black
           ),
+          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            selectedItemColor: Colors.black
+          ),
           useMaterial3: true
           ),
       home: InstaCloneHome(),
@@ -68,6 +73,17 @@ class _InstaCloneHomeState extends State<InstaCloneHome> {
         ],
       ),
       body: InstaBody(),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (newIndex) {
+          setState(() {
+            index = newIndex;
+          });
+        },
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home, size: 28,), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.search, size: 28,), label: "Search")
+        ],
+      ),
     );
   }
 }
