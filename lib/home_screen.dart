@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -102,6 +103,7 @@ class FeedItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
             padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
@@ -124,8 +126,55 @@ class FeedItem extends StatelessWidget {
                 ),
                 const Icon(Icons.more_vert)
               ],
+            )),
+        const SizedBox(height: 8),
+        Container(
+          width: double.infinity,
+          height: 300,
+          color: Colors.indigo.shade200,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  IconButton(
+                      onPressed: () {}, icon: Icon(Icons.favorite_outline)),
+                  IconButton(
+                      onPressed: () {}, icon: Icon(CupertinoIcons.chat_bubble)),
+                  IconButton(
+                      onPressed: () {}, icon: Icon(CupertinoIcons.paperplane)),
+                ],
+              ),
+              IconButton(onPressed: () {}, icon: Icon(CupertinoIcons.bookmark))
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Text(
+            '좋아요 ${feedData.likeCount}개',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
+        Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
+            child: RichText(
+                text:
+                TextSpan(
+                    children: [
+                      TextSpan(
+                          text: feedData.userName,
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(text: feedData.content),
+                    ]
+                    , style: const TextStyle(color: Colors.black)
+                )
             )
         ),
+        const SizedBox(height: 8),
       ],
     );
   }
