@@ -49,7 +49,8 @@ class _InstaCloneHomeState extends State<InstaCloneHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      // 검색화면에서는 앱바가 보이지 않게(Visibilty이용도 가능)
+      appBar: index == 0 ? AppBar(
         title: Text(
           "Instagram",
           style: GoogleFonts.lobsterTwo(color: Colors.black, fontSize: 32),
@@ -71,7 +72,7 @@ class _InstaCloneHomeState extends State<InstaCloneHome> {
             },
           )
         ],
-      ),
+      ): null,
       body: InstaBody(index:index),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: index,
