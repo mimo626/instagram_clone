@@ -72,14 +72,11 @@ class _InstaCloneHomeState extends State<InstaCloneHome> {
           )
         ],
       ),
-      body: InstaBody(),
+      body: InstaBody(index:index),
       bottomNavigationBar: BottomNavigationBar(
-        onTap: (newIndex) {
-          setState(() {
-            index = newIndex;
-          });
-        },
-        items: [
+        currentIndex: index,
+        onTap: (newIndex) { setState(() => index = newIndex);},
+        items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home, size: 28,), label: "Home"),
           BottomNavigationBarItem(icon: Icon(Icons.search, size: 28,), label: "Search")
         ],
